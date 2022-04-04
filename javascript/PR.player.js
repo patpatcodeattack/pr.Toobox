@@ -33,13 +33,22 @@ removes("sfmx1");
 removes("sfmx2");
 removes("sfcom");
 
-Thefolder();
+//Thefolder(); not used anymore, you must now manual send a message of the folder you want to read and the filepath
 createBuffer();
 createpoly();
 buffsizes();
 createdic();
 update(numsf);
 }
+
+//==========
+function readFolder(messagename){
+post(messagename);
+folderph = messagename;
+startup();
+
+}
+
 //========================================================================================
 function Thefolder(){
 //-----to find the top level of a patch
