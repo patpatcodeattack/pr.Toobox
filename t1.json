@@ -1,0 +1,72 @@
+{
+	"pattrstorage" : 	{
+		"name" : "t1",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"name" : "reset",
+				"data" : 				{
+					"crosspatch" : [ 						{
+							"data" : 							{
+								"numins" : 2,
+								"numouts" : 2
+							}
+
+						}
+ ],
+					"pr.matrixcontrl::test_listpm_MaxCo" : [ 0, 0, 0.0, 0, 1, 0.0, 1, 0, 0.0, 1, 1, 0.0 ],
+					"list" : [ "apple", "apple", 0.0 ],
+					"tt" : [ "apple-to-pear", 0, "apple-to-apple", 0 ]
+				}
+
+			}
+,
+			"2" : 			{
+				"id" : 2,
+				"name" : "apple-pear",
+				"data" : 				{
+					"crosspatch" : [ 						{
+							"data" : 							{
+								"numins" : 2,
+								"numouts" : 2
+							}
+
+						}
+ ],
+					"pr.matrixcontrl::test_listpm_MaxCo" : [ 0, 0, 100.0, 0, 1, 0.0, 1, 0, 0.0, 1, 1, 0.0 ],
+					"list" : [ 0, 1, 1.0 ],
+					"tt" : [ "apple-to-pear", 100, "apple-to-apple", 0 ]
+				}
+
+			}
+,
+			"3" : 			{
+				"id" : 3,
+				"name" : "noname",
+				"data" : 				{
+					"crosspatch" : [ 						{
+							"data" : 							{
+								"numins" : 3,
+								"numouts" : 3,
+								"connections" : [ 									{
+										"in" : 0,
+										"out" : 2,
+										"gain" : 1.0
+									}
+ ]
+							}
+
+						}
+ ],
+					"pr.matrixcontrl::test_listpm_MaxCo" : [ 0, 0, 0.0, 0, 1, 0.0, 0, 2, 0.0, 1, 0, 0.0, 1, 1, 0.0, 1, 2, 0.0, 2, 0, 0.0, 2, 1, 0.0, 2, 2, 0.0 ],
+					"list" : [ "apple", "pear", 100 ],
+					"tt" : [ "apple-to-pear", 100, "apple-to-apple", 0 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

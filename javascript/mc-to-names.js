@@ -1,0 +1,10 @@
+inlets = 0; //number of inlets
+outlets = 0; //number of outlets
+autowatch = 1; //update the js in Max when edited in an external editor
+var p = this.patcher;
+var nametag = jsarguments[1]
+var filetag = jsarguments[2]
+var d = new Dict( nametag );
+var toparray = new Array();
+var bottomarray = new Array();
+var autpattr = 1;

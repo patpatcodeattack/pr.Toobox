@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 10,
+			"minor" : 3,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 100.0, 100.0, 1006.0, 836.0 ],
+		"rect" : [ 34.0, 96.0, 1016.0, 858.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,101 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-51",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 336.0, 383.0, 150.0, 20.0 ],
+					"text" : "@chan 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-57",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 533.5, 424.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-56",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 651.5, 424.0, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-54",
+					"linecount" : 5,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 683.5, 373.0, 150.0, 74.0 ],
+					"text" : "can have either one list or if given the format with a key for top and bottom you can have a custom size matrix"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-52",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 470.0, 443.0, 35.0, 22.0 ],
+					"text" : "clear"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-49",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 533.5, 480.0, 111.0, 22.0 ],
+					"text" : "replace list one two"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-50",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 331.0, 415.0, 72.0, 22.0 ],
+					"text" : "jstest getfile"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-44",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 651.5, 500.0, 219.0, 22.0 ],
+					"text" : "replace list::bottom bannana apple pear"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-48",
 					"maxclass" : "newobj",
@@ -164,8 +259,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 21.5, 507.5, 90.0, 35.0 ],
-					"text" : ";\rapple-to-pear 0"
+					"patching_rect" : [ 21.5, 507.5, 113.0, 35.0 ],
+					"text" : ";\rapple-to-pear 0 500"
 				}
 
 			}
@@ -177,8 +272,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 21.5, 549.0, 103.0, 35.0 ],
-					"text" : ";\rapple-to-pear 100"
+					"patching_rect" : [ 21.5, 549.0, 133.0, 35.0 ],
+					"text" : ";\rapple-to-pear 100 3000"
 				}
 
 			}
@@ -363,7 +458,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 480.0, 452.0, 58.0, 22.0 ],
+					"patching_rect" : [ 451.0, 392.0, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -433,7 +528,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 622.0, 532.0, 150.0, 47.0 ],
+					"patching_rect" : [ 643.0, 640.5, 150.0, 47.0 ],
 					"text" : "if using the dictonary the list should be in an array formatted as such"
 				}
 
@@ -442,7 +537,7 @@
 				"box" : 				{
 					"id" : "obj-25",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 0,
 					"patching_rect" : [ 21.5, 469.0, 138.0, 22.0 ],
 					"text" : "pr.matrix~ fruit list inlet 1"
@@ -453,7 +548,7 @@
 				"box" : 				{
 					"id" : "obj-24",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 0,
 					"patching_rect" : [ 21.5, 244.5, 125.0, 22.0 ],
 					"text" : "pr.matrix~ ff fruitlist.txt"
@@ -548,15 +643,19 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 480.0, 490.0, 185.0, 22.0 ],
-					"text" : "replace list apple pear"
+					"patching_rect" : [ 651.5, 460.0, 149.0, 22.0 ],
+					"text" : "replace list::top apple pear"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"data" : 					{
-						"list" : [ "apple", "pear" ]
+						"list" : 						{
+							"top" : [ "apple", "pear" ],
+							"bottom" : [ "bannana", "apple", "pear" ]
+						}
+
 					}
 ,
 					"id" : "obj-6",
@@ -624,15 +723,6 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-11", 0 ],
-					"order" : 1,
-					"source" : [ "obj-13", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-8", 0 ],
-					"order" : 0,
 					"source" : [ "obj-13", 0 ]
 				}
 
@@ -697,6 +787,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-44", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-25", 0 ],
 					"source" : [ "obj-46", 0 ]
 				}
@@ -711,8 +808,52 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-49", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-29", 0 ],
 					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"source" : [ "obj-50", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-52", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-44", 0 ],
+					"order" : 0,
+					"source" : [ "obj-56", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-8", 0 ],
+					"order" : 1,
+					"source" : [ "obj-56", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-49", 0 ],
+					"source" : [ "obj-57", 0 ]
 				}
 
 			}
@@ -732,36 +873,36 @@
 			}
  ],
 		"dependency_cache" : [ 			{
+				"name" : "maxtrixmaker2.js",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
 				"name" : "pr.XbarMaker.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
+				"patcherrelativepath" : "../patchers",
+				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pr.matrix~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "xbar.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/patchers",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
 				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "xmaker.js",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "pr.matrix~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/patchers",
-				"patcherrelativepath" : "../patchers",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "maxtrixmaker.js",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/javascript",
+				"name" : "xmaker2.js",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/javascript",
 				"patcherrelativepath" : "../javascript",
 				"type" : "TEXT",
 				"implicit" : 1
@@ -772,13 +913,13 @@
 				"name" : "AudioStatus_Menu",
 				"default" : 				{
 					"bgfillcolor" : 					{
-						"type" : "color",
+						"angle" : 270.0,
+						"autogradient" : 0,
 						"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
 						"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
 						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"angle" : 270.0,
 						"proportion" : 0.39,
-						"autogradient" : 0
+						"type" : "color"
 					}
 
 				}
@@ -798,25 +939,25 @@
 , 			{
 				"name" : "Minimal",
 				"default" : 				{
+					"accentcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"bgcolor" : [ 0.999999, 0.999974, 0.999991, 1.0 ],
 					"bgfillcolor" : 					{
-						"type" : "color",
+						"angle" : 270.0,
+						"autogradient" : 0.0,
 						"color" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 						"color1" : [ 0.65098, 0.666667, 0.662745, 1.0 ],
 						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"angle" : 270.0,
 						"proportion" : 0.39,
-						"autogradient" : 0.0
+						"type" : "color"
 					}
 ,
-					"fontface" : [ 0 ],
-					"selectioncolor" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"accentcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"fontsize" : [ 10.0 ],
+					"color" : [ 0.0, 0.0, 0.0, 1.0 ],
 					"elementcolor" : [ 0.999999, 0.999974, 0.999991, 1.0 ],
-					"bgcolor" : [ 0.999999, 0.999974, 0.999991, 1.0 ],
-					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"fontface" : [ 0 ],
 					"fontname" : [ "Futura Medium" ],
-					"color" : [ 0.0, 0.0, 0.0, 1.0 ]
+					"fontsize" : [ 10.0 ],
+					"selectioncolor" : [ 0.0, 0.0, 0.0, 1.0 ],
+					"textcolor_inverse" : [ 0.0, 0.0, 0.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -825,8 +966,8 @@
 , 			{
 				"name" : "Patrick",
 				"default" : 				{
-					"elementcolor" : [ 0.254901960784314, 0.274509803921569, 0.462745098039216, 1.0 ],
-					"color" : [ 0.227450980392157, 0.909803921568627, 0.980392156862745, 1.0 ]
+					"color" : [ 0.227450980392157, 0.909803921568627, 0.980392156862745, 1.0 ],
+					"elementcolor" : [ 0.254901960784314, 0.274509803921569, 0.462745098039216, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
@@ -891,8 +1032,8 @@
 				"name" : "velvet-biggs",
 				"default" : 				{
 					"clearcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
-					"fontname" : [ "Avenir Next Regular" ]
+					"fontname" : [ "Avenir Next Regular" ],
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",

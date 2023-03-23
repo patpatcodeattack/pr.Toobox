@@ -17,7 +17,8 @@ if (numin == null){ numin = 0}
 if (numout == null){ numout = 0}
 
 var filetype ; //gets updated after the function getfle
-var amount ; //the amount of effects, gets updated after the function getfle
+var amountT ; //the amount of effects, gets updated after the function getfle
+var amountB ; //the amount of effects, gets updated after the function getfle
 var invnames = "inlet";
 var outvnames = "outlet";
 var matrixvname = "matrixs";
@@ -25,8 +26,8 @@ var Rvnames = "reveicer";
 var Svnames = "sender";
 var channs = 2; //default number of channels for each  r and s
 var d = new Dict( nametag );
-var effectlist = new Array();//global array of all effects(note input and output are not included in this array)
-
+var effectlistT = new Array();//global array of all effectsOnTOP(note input and output are not included in this array)
+var effectlistB = new Array();//global array of all effectsOnBottom(note input and output are not included in this array)
 
 //positionmaker---------------
 var sbx = 300 ;//spacebetween x
@@ -84,6 +85,11 @@ if (out.length < numout){
         }
     }
 }
+function chan(v){
+	channs = v;
+	startup();
+	}
+////
 function bang(){
 if (nametag == "#1"){removeall()}
 else  if (filetag == "#2"){removeall()}
@@ -98,13 +104,16 @@ removes(Rvnames);
 removes(Svnames);
 removes(outvnames);	
 	}
+	
+//=======================================
+//=======================================	
 function startup(){		
 
 removes(matrixvname);
 removes(Rvnames);
 removes(Svnames);
 
-effectlist = new Array();
+//effectlist = new Array();
 getfile();
 positions();
 makein();
@@ -114,6 +123,7 @@ makeMsend();
 connecter();
 
 }
+//=======================================
 ////////////////////////////////////////////////////////////////////
 function positions(){
  ix = new Array();
@@ -149,12 +159,12 @@ var sby = 55 ; //spacebwetween y
 	}
 	if (numin === 0){recx = inletx + 50}
 //create receive position
-	for (i=0;i<amount;i++){
-		rx[i] =  recx +  (sbx * Math.floor(i/(amount/2))) ;
+	for (i=0;i<amountT;i++){
+		rx[i] =  recx +  (sbx * Math.floor(i/(amountT/2))) ;
 
-		ry[i] = 70 +  (sby * Math.floor(i % (amount/2)) ) ;		
+		ry[i] = 160 +  (sby * Math.floor(i % (amountT/2)) ) ;		
 	}
-	maxtrixy = ry[Math.floor(amount/2)] + 120;
+	maxtrixy = ry[Math.floor(amountT/2)] + 120;
 
 	outlety = maxtrixy + 70 ;
 //create outlet positionw
@@ -173,11 +183,11 @@ var sby = 55 ; //spacebwetween y
 if (numout === 0){sendx = 5 }
 if (numout === 0){sendy = outlety }
 //create send position
-	for (i=0;i<amount;i++){
-		sx[i] =  sendx +  (sbx * Math.floor(i/(amount/2))) ;
-		if (amount === 1) { sy[i] = sendy +  (sby * 0 ) }
+	for (i=0;i<amountB;i++){
+		sx[i] =  sendx +  (sbx * Math.floor(i/(amountB/2))) ;
+		if (amountB === 1) { sy[i] = sendy +  (sby * 0 ) }
  		else {
-		sy[i] = sendy +   (sby * Math.floor(i % (amount/2)) ) ;	
+		sy[i] = sendy +   (sby * Math.floor(i % (amountB/2)) ) ;	
 		}
 	}
 }
@@ -216,29 +226,31 @@ function makeinout(){
 }
 */
 function makeMreceive(){
-	for (i=0;i<amount;i++){
-		Maker = p.newdefault( rx[i] , ry[i], "mc.receive~", effectlist[i] + "-out", channs);
+
+	for (i=0;i<amountT;i++){
+		Maker = p.newdefault( rx[i] , ry[i], "mc.receive~", effectlistT[i] + "-out", channs);
 		Maker.varname = Rvnames;
+
 	}
 }
-
+//=======================================
 function makeMatrix(){
-var ins = amount + numin ;
-var outs = amount + numout;
+var ins = amountT + numin ;
+var outs = amountB + numout;
 Maker = p.newdefault(maxtrixx, maxtrixy, "mc.matrix~", ins, outs, "1.0");
 Maker.varname = matrixvname;
 }
-
+//=======================================
 //make the defaul inlet for maxtrix to receive messages only
 function makeMsend(){
-	for (i=0;i<amount;i++){
+	for (i=0;i<amountB;i++){
 
-		Maker = p.newdefault( sx[i] , sy[i], "mc.send~", effectlist[i] + "-in", channs);
+		Maker = p.newdefault( sx[i] , sy[i], "mc.send~", effectlistB[i] + "-in", channs);
 		Maker.varname = Svnames;
 	}
 }
-
-
+//=======================================
+//=======================================
 function connecter(){
 	var i1 = p.getnamed("pass");	
 	var m = p.getnamed(matrixvname);
@@ -265,18 +277,18 @@ function connecter(){
 			p.connect(m, i ,ous,0);
 	}
 //receives 
-	for (i=0;i<amount;i++){	
+	for (i=0;i<amountT;i++){	
 			if (i === 0 ) {ous = p.getnamed(Rvnames)}
 			else{ ous = p.getnamed(Rvnames + "[" + i + "]")}			
 			p.connect(ous, 0, m, numin + i );						
 	}	
 //send 
-	for (i=0;i<amount;i++){	
+	for (i=0;i<amountB;i++){	
 			if (i === 0 ) {ous = p.getnamed(Svnames)}
 			else{ ous = p.getnamed(Svnames + "[" + i + "]")}			
 			p.connect( m, numout + i , ous, 0);;				
 	}	
-	p.connect( m, numout + amount , sss, 0);	
+	p.connect( m, numout + amountB , sss, 0);	
 	//p.connect( m, numout + amount + 1 , sss, 0);																					
 }
 //-------------------------------------------------------------------------
@@ -295,17 +307,45 @@ function getfile(){
  //if the file is for a dictionrary
 	else {
  			filetype = "dictonary";
- 			var names = d.getkeys();
- 			if (names != filetag){post("error key in dictionary not found")}
- 			else{
- 				 amount = 0 ;
-				 amount = d.getsize(filetag); 
-	 	 		for (t=0;t<amount;t++){
-	 	 			 effectlist[t] = d.get(filetag + "[" + t  + "]") ;
-	 	 		}
+ 			
+ 			// (names != filetag){post("error key in dictionary not found")}
+
+ 				kind = d.gettype()
+ 				 if (kind == "array"){//that means everything for top and bottom is the same
+ 				 	amountT = 0 ;
+ 				 	amountB = 0 ;
+ 				 	amountT = d.getsize();
+ 				 	amountB = d.getsize();
+ 				 	for (t=0;t<amountT;t++){
+ 				 		effectlistT[t] = d.get(filetag + "::top" + "[" + t  + "]") ;
+ 				 	}	
+ 				  	for (t=0;t<amountB;t++){
+ 				 		effectlistB[t] = d.get(filetag + "::bottom" + "[" + t  + "]") ;
+ 				 	}	
+ 				 }
+ 				 if (kind== "dictionary"){
+ 				  	amountT = 0 ;
+ 				 	amountB = 0 ;
+ 				 	var namesT = d.get(filetag +"::top");
+ 				 	var namesB = d.get(filetag +"::bottom");
+ 				 	amountT = d.getsize(filetag +"::top");
+ 				 	amountB = d.getsize(filetag +"::bottom");
+ 				 
+ 				  	for (t=0;t<amountT;t++){
+ 				 		effectlistT[t] = d.get(filetag +"::top" + "[" + t  + "]") ;
+ 				 		
+ 				 	}	
+ 				  	for (t=0;t<amountB;t++){
+ 				 		effectlistB[t] = d.get(filetag +"::bottom" + "[" + t  + "]") ;
+ 				 	}	
+ 				 
+ 				 
+ 				 
+ 				
  			}
 	 }
 }
+//=======================================
 //------------------------------------------------------------------------
 //removes all versions of that object/////////////
 function removes(id){ //the main function to call
@@ -324,4 +364,5 @@ function scan(obj){
     }else{
         return(false);
     }
-}//removes all versions of that object/////////////																																																																																																																																	
+}//removes all versions of that object/////////////		
+//=======================================																																																																																																																															

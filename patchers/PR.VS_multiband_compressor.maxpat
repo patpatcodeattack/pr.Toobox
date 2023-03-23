@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 17.0, 219.0, 897.0, 624.0 ],
+		"rect" : [ 17.0, 219.0, 993.0, 851.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,69 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-53",
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 288.0, 450.0, 150.0, 20.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 243.104614000000026, 52.0, 20.0 ],
+					"text" : "bypass"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-50",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"patching_rect" : [ 368.5, 350.0, 29.5, 22.0 ],
+					"text" : "!- 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-49",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 337.0, 344.0, 29.5, 22.0 ],
+					"text" : "$1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-33",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "signal" ],
+					"patching_rect" : [ 179.0, 145.104614000000026, 29.5, 22.0 ],
+					"text" : "*~"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-18",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 337.0, 253.104614000000026, 46.0, 46.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 10.0, 265.104614000000026, 52.0, 52.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-47",
 					"maxclass" : "message",
@@ -140,7 +203,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 388.5, 9.0, 73.0, 22.0 ],
+					"patching_rect" : [ 248.5, 110.0, 73.0, 22.0 ],
 					"text" : "loadmess 1."
 				}
 
@@ -181,7 +244,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 75.0, 540.0, 48.0, 136.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 57.0, 259.0, 48.0, 136.0 ],
+					"presentation_rect" : [ 68.0, 253.0, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
 							"parameter_longname" : "live.gain~",
@@ -207,43 +270,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 75.0, 697.0, 30.0, 30.0 ]
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"basictuning" : 440,
-					"data" : 					{
-						"clips" : [ 							{
-								"absolutepath" : "Patrick.wav",
-								"filename" : "Patrick.wav",
-								"filekind" : "audiofile",
-								"id" : "u516004529",
-								"selection" : [ 0.431578947368421, 0.684210526315789 ],
-								"loop" : 0,
-								"content_state" : 								{
-
-								}
-
-							}
- ]
-					}
-,
-					"followglobaltempo" : 0,
-					"formantcorrection" : 0,
-					"id" : "obj-18",
-					"maxclass" : "playlist~",
-					"mode" : "basic",
-					"numinlets" : 1,
-					"numoutlets" : 5,
-					"originallength" : [ 0.0, "ticks" ],
-					"originaltempo" : 120.0,
-					"outlettype" : [ "signal", "signal", "signal", "", "dictionary" ],
-					"parameter_enable" : 0,
-					"patching_rect" : [ 467.508179000000041, 5.0, 150.0, 30.0 ],
-					"pitchcorrection" : 0,
-					"quality" : "basic",
-					"timestretch" : [ 0 ]
 				}
 
 			}
@@ -8214,7 +8240,7 @@
 					"presentation_rect" : [ 29.0, 161.406921000000011, 99.000061000000002, 53.395386000000002 ],
 					"preset_data" : [ 						{
 							"number" : 1,
-							"data" : [ 5, "obj-4", "toggle", "int", 1, 5, "obj-3", "umenu", "int", 2, 5, "obj-64", "number", "int", -21, 5, "obj-60", "flonum", "float", 1.0, 5, "obj-55", "flonum", "float", 10.0, 5, "obj-51", "flonum", "float", 100.0, 5, "obj-48", "flonum", "float", 1.0, 5, "obj-34", "flonum", "float", -29.0, 5, "obj-31", "flonum", "float", 0.300000011920929, 5, "obj-17", "flonum", "float", 0.0, 5, "obj-37", "flonum", "float", 0.0, 5, "obj-112", "flonum", "float", 6.0, 5, "obj-111", "flonum", "float", 80.0, 5, "obj-109", "flonum", "float", 1.0, 5, "obj-106", "flonum", "float", -40.0, 5, "obj-105", "flonum", "float", 0.5, 5, "obj-96", "flonum", "float", 0.0, 5, "obj-133", "flonum", "float", 6.0, 5, "obj-132", "flonum", "float", 3.0, 5, "obj-131", "flonum", "float", 1.0, 5, "obj-130", "flonum", "float", -34.0, 5, "obj-129", "flonum", "float", 0.5, 5, "obj-120", "flonum", "float", 0.0, 6, "obj-146", "rslider", "list", 354, 1903, 5, "obj-148", "flonum", "float", 404.0, 5, "obj-150", "flonum", "float", 1953.0, 5, "obj-156", "toggle", "int", 1, 5, "obj-157", "toggle", "int", 1, 5, "obj-159", "toggle", "int", 1, 5, "obj-18", "playlist~", "preset_count", 1, 7, "obj-18", "playlist~", "preset_clipstate", 1, "filekind", "audiofile", 7, "obj-18", "playlist~", "preset_clipstate", 1, "absolutepath", "Macintosh HD:/Users/patrick/Downloads/Patrick.wav", 7, "obj-18", "playlist~", "preset_clipstate", 1, "filename", "Patrick.wav", 7, "obj-18", "playlist~", "preset_clipstate", 1, "loop", 0, 8, "obj-18", "playlist~", "preset_clipstate", 1, "selection", 0.431578947368421, 0.684210526315789, 7, "obj-18", "playlist~", "preset_clipstate", 1, "id", "u516004529", 4, "obj-18", "playlist~", "preset_execute" ]
+							"data" : [ 5, "obj-4", "toggle", "int", 1, 5, "obj-3", "umenu", "int", 2, 5, "obj-64", "number", "int", -21, 5, "obj-60", "flonum", "float", 1.0, 5, "obj-55", "flonum", "float", 10.0, 5, "obj-51", "flonum", "float", 100.0, 5, "obj-48", "flonum", "float", 1.0, 5, "obj-34", "flonum", "float", -29.0, 5, "obj-31", "flonum", "float", 0.300000011920929, 5, "obj-17", "flonum", "float", 0.0, 5, "obj-37", "flonum", "float", 0.0, 5, "obj-112", "flonum", "float", 6.0, 5, "obj-111", "flonum", "float", 80.0, 5, "obj-109", "flonum", "float", 1.0, 5, "obj-106", "flonum", "float", -40.0, 5, "obj-105", "flonum", "float", 0.5, 5, "obj-96", "flonum", "float", 0.0, 5, "obj-133", "flonum", "float", 6.0, 5, "obj-132", "flonum", "float", 3.0, 5, "obj-131", "flonum", "float", 1.0, 5, "obj-130", "flonum", "float", -34.0, 5, "obj-129", "flonum", "float", 0.5, 5, "obj-120", "flonum", "float", 0.0, 6, "obj-146", "rslider", "list", 354, 1903, 5, "obj-148", "flonum", "float", 404.0, 5, "obj-150", "flonum", "float", 1953.0, 5, "obj-156", "toggle", "int", 1, 5, "obj-157", "toggle", "int", 1, 5, "obj-159", "toggle", "int", 1, 5, "<invalid>", "playlist~", "preset_count", 1, 7, "<invalid>", "playlist~", "preset_clipstate", 1, "filekind", "audiofile", 7, "<invalid>", "playlist~", "preset_clipstate", 1, "absolutepath", "Macintosh HD:/Users/patrick/Downloads/Patrick.wav", 7, "<invalid>", "playlist~", "preset_clipstate", 1, "filename", "Patrick.wav", 7, "<invalid>", "playlist~", "preset_clipstate", 1, "loop", 0, 8, "<invalid>", "playlist~", "preset_clipstate", 1, "selection", 0.431578947368421, 0.684210526315789, 7, "<invalid>", "playlist~", "preset_clipstate", 1, "id", "u516004529", 4, "<invalid>", "playlist~", "preset_execute" ]
 						}
 , 						{
 							"number" : 2,
@@ -8757,6 +8783,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-49", 0 ],
+					"order" : 1,
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-50", 0 ],
+					"order" : 0,
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-154", 0 ],
 					"midpoints" : [ 618.008239999999887, 246.0, 618.008239999999887, 246.0 ],
 					"source" : [ "obj-198", 0 ]
@@ -8839,6 +8881,14 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"midpoints" : [ 188.5, 261.0, 213.0, 261.0, 213.0, 525.0, 84.5, 525.0 ],
+					"source" : [ "obj-33", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-198", 6 ],
 					"hidden" : 1,
 					"source" : [ "obj-34", 0 ]
@@ -8891,7 +8941,23 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-33", 1 ],
+					"source" : [ "obj-49", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-28", 0 ],
+					"order" : 1,
+					"source" : [ "obj-5", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-33", 0 ],
+					"order" : 0,
 					"source" : [ "obj-5", 0 ]
 				}
 
@@ -8907,6 +8973,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-47", 0 ],
 					"source" : [ "obj-5", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-28", 1 ],
+					"source" : [ "obj-50", 0 ]
 				}
 
 			}

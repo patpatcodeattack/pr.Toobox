@@ -3,7 +3,7 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 3,
+			"minor" : 5,
 			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
@@ -81,7 +81,6 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 867.0, 643.5, 150.0, 47.0 ],
-					"presentation_linecount" : 3,
 					"text" : "need one more argument, the max number of channels in a soundfile. "
 				}
 
@@ -544,14 +543,14 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 957.0, 465.0, 640.0, 480.0 ],
+						"rect" : [ 1080.0, 439.0, 404.0, 611.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -579,14 +578,52 @@
 						"style" : "",
 						"subpatcher_template" : "",
 						"assistshowspatchername" : 0,
+						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-6",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 110.5, 95.0, 47.0, 22.0 ],
+									"text" : "all stop"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-3",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 192.799998849630356, 162.0, 75.0, 22.0 ],
+									"text" : "getname sf2"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-1",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 192.799998849630356, 134.0, 51.0, 22.0 ],
+									"presentation_linecount" : 2,
+									"text" : "stop sf1"
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-7",
 									"linecount" : 2,
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 100.0, 290.599997699260712, 33.0 ],
+									"patching_rect" : [ 189.0, 23.0, 290.599997699260712, 33.0 ],
 									"text" : "to send any paramter or start or stop message just attach a all as the first part of the list"
 								}
 
@@ -598,7 +635,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 203.5, 139.5, 67.0, 22.0 ],
+									"patching_rect" : [ 224.5, 61.5, 67.0, 22.0 ],
 									"text" : "all pan 100"
 								}
 
@@ -610,7 +647,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 139.5, 141.0, 22.0 ],
+									"patching_rect" : [ 71.0, 61.5, 141.0, 22.0 ],
 									"text" : "all vol -15 500 -5, all play"
 								}
 
@@ -621,7 +658,7 @@
 									"maxclass" : "newobj",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 50.0, 219.0, 51.0, 22.0 ],
+									"patching_rect" : [ 72.0, 239.0, 51.0, 22.0 ],
 									"text" : "s player"
 								}
 
@@ -633,13 +670,27 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 223.5, 177.0, 47.0, 22.0 ],
+									"patching_rect" : [ 278.5, 162.0, 47.0, 22.0 ],
 									"text" : "all stop"
 								}
 
 							}
  ],
 						"lines" : [ 							{
+								"patchline" : 								{
+									"destination" : [ "obj-47", 0 ],
+									"source" : [ "obj-1", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-47", 0 ],
+									"source" : [ "obj-3", 0 ]
+								}
+
+							}
+, 							{
 								"patchline" : 								{
 									"destination" : [ "obj-47", 0 ],
 									"source" : [ "obj-4", 0 ]
@@ -793,7 +844,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -1055,7 +1106,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -1494,7 +1545,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -2335,7 +2386,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -2568,7 +2619,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -3043,7 +3094,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -3357,7 +3408,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -3712,7 +3763,7 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 3,
+							"minor" : 5,
 							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
@@ -4091,6 +4142,7 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
+					"disabled" : 1,
 					"source" : [ "obj-14", 0 ]
 				}
 
@@ -4256,42 +4308,42 @@
 		"dependency_cache" : [ 			{
 				"name" : "PR.MCplayer.js",
 				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/javascript",
-				"patcherrelativepath" : "../javascript",
+				"patcherrelativepath" : "./javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "PR.player.js",
 				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/javascript",
-				"patcherrelativepath" : "../javascript",
+				"patcherrelativepath" : "./javascript",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "Pr.MCplayer~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
-				"patcherrelativepath" : "../patchers",
+				"patcherrelativepath" : "./patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "Pr.player~.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
-				"patcherrelativepath" : "../patchers",
+				"patcherrelativepath" : "./patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "mc-playerpoly.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
-				"patcherrelativepath" : "../patchers",
+				"patcherrelativepath" : "./patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "playerpoly.maxpat",
 				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
-				"patcherrelativepath" : "../patchers",
+				"patcherrelativepath" : "./patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}

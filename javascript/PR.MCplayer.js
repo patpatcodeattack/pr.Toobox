@@ -3,8 +3,8 @@ outlets = 2; //number of outlets
 autowatch = 1; //update the js in Max when edited in an external editor
 var p = this.patcher;
 var dictnumber = jsarguments[3]
-var d = new Dict( dictnumber, "sounds" + "_player" );
-
+var d = new Dict( dictnumber + "sounds" + "_player" );
+var MC = jsarguments[4]
 var folder =      jsarguments[1];
 var numsf = 1; //this gets updated to correct number of soundfiles in createBuffer function
 var polynumber = jsarguments[2] ;
@@ -13,7 +13,7 @@ var folderph = null ;//folderpath
 var poly = new Array(); //poly objects
 
 var pb = new PolyBuffer(folder); 
-var fileplayerfile = "playerpoly" ; //name of file in the poly
+var fileplayerfile = "mc-playerpoly" ; //name of file in the poly
 var namespoly = new Array(); ;//the array for poly buffer names
 var buffersizes = new Array();
 
@@ -102,8 +102,8 @@ var nameer =  toplevelpath.slice(te-(4));
 
  ////////for the help file only finiding the folder of sounds
   if (nameer == "help"){
-    post("help");
-    post();
+  //  post("help");
+    //post();
     var pp = this.patcher.parentpatcher
     var fp = pp.filepath;
     var t = fp.length;
@@ -126,8 +126,8 @@ function folderlook (messagename){
 			if (f.filename == folder){
 			amy = f.pathname + "/" + f.filename;
     		
-			post("foundit");
-			post();
+		//	post("foundit");
+		//	post();
 			break 
 			}
 			else {
@@ -210,7 +210,7 @@ if (folderph != null){
 polyb.message("readfolder",folderph);
 }
 numsf = pb.count; //very important update of var
-post(namespoly);
+//(namespoly);
 namespoly = pb.getshortname();
 //foldpath
 namespoly = namespoly.filter(FIlt);//filter out the names of the buffer in the array
@@ -224,33 +224,37 @@ return index % 2 === 1 ;//filter needs a function to work this is the function
 }
 //------------------------------------------------
 function createpoly(){
-var mxL = p.newdefault(531,335, "mc.mixdown~", 1);
+var mxL = p.newdefault(531,335, "mc.mixdown~", MC);
 mxL.varname = "sfmx1";
-var mxR = p.newdefault(645,335, "mc.mixdown~", 1);
-mxR.varname = "sfmx2";
-mcCom = p.newdefault(531,369, "mc.combine~");
-mcCom.varname = "sfcom" ;
+//var mxR = p.newdefault(645,335, "mc.mixdown~", 1);
+//mxR.varname = "sfmx2";
+//mcCom = p.newdefault(531,369, "mc.combine~");
+//mcCom.varname = "sfcom" ;
 var ou = p.getnamed("outs");
-p.connect(mxL, 0, mcCom, 0);
-p.connect(mxR, 0, mcCom, 1);
-p.connect(mcCom, 0, ou, 0);
+//p.connect(mxL, 0, mcCom, 0);
+//p.connect(mxR, 0, mcCom, 1);
+p.connect(mxL, 0, ou, 0);
 for (i=1; i < (numsf+1);i++){
 	var ix = i-1;
 		var x=  (ix%2 * 200) + 10;
 		var y= ((Math.floor((ix)/2)) * 100) + 10;
 		var bufname=  folder + "." + i; 
 		var buf = new Buffer(bufname);
-		poly[ix] = p.newdefault(x,y, "mc.poly~", fileplayerfile ,polynumber, "@args", bufname );
+		poly[ix] = p.newdefault(x,y, "mcs.poly~", fileplayerfile ,polynumber,   "@args", bufname, MC );
 		poly[ix].varname =  folder + "." + i;
 		var channels = buf.channelcount();
-		if (channels == 1)  {
-			p.hiddenconnect(poly[ix], 0, mxL,0); 
-			p.hiddenconnect(poly[ix], 1, mxR,0);
-			}
-		if (channels == 2)  {		
-			p.hiddenconnect(poly[ix], 0, mxL,0); 
-			p.hiddenconnect(poly[ix],1, mxR,0);
-			}
+		p.hiddenconnect(poly[ix], 0, mxL,0); 
+			
+		
+		
+		//if (channels == 1)  {
+		//	p.hiddenconnect(poly[ix], 0, mxL,0); 
+		//	p.hiddenconnect(poly[ix], 1, mxR,0);
+		//	}
+		//if (channels == 2)  {		
+			//p.hiddenconnect(poly[ix], 0, mxL,0); 
+			//p.hiddenconnect(poly[ix],1, mxR,0);
+		//	}
 			
 }
 }
@@ -260,7 +264,7 @@ outlet(1, "clear");
 	for (i=0; i < (numsf);i++){
 		
  		d.replace(namespoly[i] + "::vol", 0);
-		 d.replace(namespoly[i] + "::pan", 50);
+		d.replace(namespoly[i] + "::pan", 50);
  		d.replace(namespoly[i] + "::start", 0);
  		d.replace(namespoly[i] + "::end", buffersizes[i]);
  		d.replace(namespoly[i] + "::speed", 1);
@@ -317,30 +321,39 @@ function update(howmany){
 }
 
 function getname(soundfile){
+	
 	var realname = soundfile.search(folder);	
-	var sss=soundfile.split( "/");
-	var ss=sss[0].split( folder);
+	var sss= soundfile.split( "/");
+
+	var ss=sss[0].split(folder);
+
 	var namer;
-	if (ss[1] != null){namer = namespoly[Number(ss[1]) - 1  ]}
-	if (ss[1] == null){namer =ss[0]}
+	if (ss[1] != null){namer = namespoly[Number(ss[1]) - 1  ]}//original line that has issue
+
+	
+	if (ss[1] === null){namer =ss[0]}
 	var polynub;
-	if (ss[1] == null){polynub = namespoly.indexOf(namer)  }
+
+	
+	if (ss[1] === null){polynub = namespoly.indexOf(namer)  }
 	if (ss[1] != null){polynub = Number(ss[1]) - 1 } 
 	var targetnumb;
 	targetnumb = sss[1];
-	if (targetnumb == null) {targetnumb=0}		
+	
+	if (targetnumb === null) {targetnumb=0}
+	post(polynub);
 	return [polynub, namer, targetnumb]; 
 }
+//==========
 function dict(soundfilename,thing,vall){
 d.replace(soundfilename + "::" + thing , vall);
 }	
+//==========
 function send(name, arg,reset){
 
 dict(name, arg, reset);
-
-
-
 }
+//==========
 //=================================================== arguments to send to the js=========
 	//------------------------------------------------------------------------------------
 function reset(soundfile, var2){
@@ -523,10 +536,11 @@ function reset(soundfile, var2){
 //=================================================== 
 function play (soundfile, fadetime, curve){
 	var info = getname(soundfile); // returns 3 arguments in an array [soundfile poly number, the soudnfile name, the target of that poly]
+	
 	var polynub = info[0];
 	var targetnumb = info[2];
 	if (fadetime == null){fadetime = 50}
-	if (curve == null){curve = 0.5}
+	if (curve == null){curve = .5}
 	//all
 	if ( targetnumb === 0){
 		poly[polynub].message("note", "start",fadetime,curve);
@@ -534,27 +548,32 @@ function play (soundfile, fadetime, curve){
 	//specific number
 	if( targetnumb != 0){
 		poly[polynub].message("target", targetnumb );
-		poly[polynub].message( "start",fadetime,curve);
+	//	poly[polynub].message( "start",fadetime,curve);// og
+		poly[polynub].message("note", "start",fadetime,curve);// this is testing....+++++++++++++++++
 	}
 }
 //===================================================
 //=================================================== 
 function stop (soundfile, fadetime, curve){
-post(soundfile);
-var info = getname(soundfile); // returns 3 arguments in an array [soundfile poly number, the soudnfile name, the target of that poly]
+
+	var info = getname(soundfile); // returns 3 arguments in an array [soundfile poly number, the soudnfile name, the target of that poly]
+	post('//');
+	post(info);
+	post('//');
 	var polynub = info[0];
+
 	var targetnumb = info[2];
 	if (fadetime == null){fadetime = 50}
 	if (curve == null){curve = 0.5}
-	
-	post('stop',fadetime,curve);
 	//all
 	if (targetnumb === 0){
-		//	poly[polynub].message("target", targetnumb );
+	//post('iszero');
+			poly[polynub].message("target", targetnumb );
 			poly[polynub].message( "stop",fadetime,curve);
 	}
 	//specific number
 	if (targetnumb != 0){
+	//post('notszero');
 			poly[polynub].message("target", targetnumb );
 			poly[polynub].message( "stop",fadetime,curve);
 	}
@@ -571,6 +590,8 @@ function vol(soundfile,db,interptime, newdb){
 	var targetnumb = info[2];
 	var amp = db;
 	if (newdb != null){amp = newdb}
+	
+	
 	//all
 	if (targetnumb === 0){
 			poly[polynub].message("target", targetnumb );
@@ -593,7 +614,9 @@ function pan(soundfile, pan,ramptime ,pannew){
 	var ppan = pan;
 	if (pannew != null){ppan = pannew}
 		//all
+		
 		if (targetnumb === 0){
+			//post("pan",pan,ramptime,pannew);
 			poly[polynub].message("target", targetnumb );
 			poly[polynub].message("pan",pan,ramptime,pannew);
 			for (s=0; s < (polynumber);s++){ dict(soundfilename,"pan[" + s + "]",ppan) }
@@ -749,20 +772,30 @@ var info = getname(soundfile); // returns 3 arguments in an array [soundfile pol
 	}
 }
 //===================================================
-function all (param1,param2,param3,param4){
+function all (){
+	var param = arrayfromargs( arguments);
+
+	post(namespoly);
+
+	if (param[0] === "play"){for (i=0; i < (numsf);i++){ play(namespoly[i],param[1],param[2])}}
+	
 
 	
-	if (param1 === "play"){for (i=0; i < (numsf);i++){ play(namespoly[i],param2,param3)}}
-	if (param1 === "stop"){for (i=0; i < (numsf);i++){ stop(namespoly[i],param2,param3)}}
-	if (param1 === "vol"){for (i=0; i < (numsf);i++){vol(namespoly[i],param2,param3,param4)}}
-	if (param1 === "pan"){for (i=0; i < (numsf);i++){ pan(namespoly[i],param2,param3,param4)}}
-	if (param1 === "loop"){for (i=0; i < (numsf);i++){loop(namespoly[i],param2)}}
-	if (param1 === "section"){for (i=0; i < (numsf);i++){section(namespoly[i],param2,param3)}}
-	if (param1 === "start"){for (i=0; i < (numsf);i++){start(namespoly[i],param2)}}
-	if (param1 === "end")for (i=0; i < (numsf);i++){{end(namespoly[i],param2)}}
-	if (param1 === "reverse"){for (i=0; i < (numsf);i++){reverse(namespoly[i],param2)}}
-	if (param1 === "speed"){for (i=0; i < (numsf);i++){speed(namespoly[i],param2)}}
-}
+		
+	if (param[0] === "stop"){for (i=0; i < (numsf);i++){ stop(namespoly[i],param[1],param[2])}}
+	
+	
+	if (param[0] === "vol"){for (i=0; i < (numsf);i++){vol(namespoly[i],param2,param3,param4)}}
+	
+
+	if (param[0] === "pan"){for (i=0; i < (numsf);i++){ pan(namespoly[i],param2,param3,param4)}}
+	if (param[0] === "loop"){for (i=0; i < (numsf);i++){loop(namespoly[i],param2)}}
+	if (param[0] === "section"){for (i=0; i < (numsf);i++){section(namespoly[i],param2,param3)}}
+	if (param[0] === "start"){for (i=0; i < (numsf);i++){start(namespoly[i],param2)}}
+	if (param[0] === "end")for (i=0; i < (numsf);i++){{end(namespoly[i],param2)}}
+	if (param[0] === "reverse"){for (i=0; i < (numsf);i++){reverse(namespoly[i],param2)}}
+	if (param[0] === "speed"){for (i=0; i < (numsf);i++){speed(namespoly[i],param2)}}
+
 //========================================================================================
 //========================other handy functions===========================================
 function viewdic (){
@@ -778,7 +811,7 @@ function polym(){
  	a = a.slice(1);
 	
 	for (s=0; s < (numsf);s++){ poly[s].message(a)
-	post(a);
+	//post(a);
 }
 	
 

@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 1,
-			"revision" : 10,
+			"minor" : 3,
+			"revision" : 2,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 482.0, 290.0, 1038.0, 664.0 ],
+		"rect" : [ 100.0, 100.0, 1038.0, 664.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,31 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 612.0, 351.0, 290.0, 22.0 ],
+					"text" : "pr.XbarMaker ef effects @inlet 1 @outlet 1 @same 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 379.0, 563.0, 193.0, 22.0 ],
+					"presentation_linecount" : 2,
+					"text" : "replace effects::bottom reverb filter"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-41",
 					"linecount" : 3,
@@ -131,8 +156,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 1,
-							"revision" : 10,
+							"minor" : 3,
+							"revision" : 2,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -253,7 +278,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 363.0, 534.5, 58.0, 22.0 ],
+					"patching_rect" : [ 363.0, 488.5, 58.0, 22.0 ],
 					"text" : "loadbang"
 				}
 
@@ -266,8 +291,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 182.0, 436.0, 137.0, 35.0 ],
-					"text" : ";\rreverb-to-out1 100 3000"
+					"patching_rect" : [ 199.0, 519.0, 154.0, 35.0 ],
+					"text" : ";\rreverb-to-output1 100 3000"
 				}
 
 			}
@@ -303,7 +328,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 182.0, 385.5, 107.0, 35.0 ],
+					"patching_rect" : [ 199.0, 468.5, 107.0, 35.0 ],
 					"text" : ";\rfilter-to-reverb 100"
 				}
 
@@ -328,8 +353,8 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 182.0, 335.0, 89.0, 35.0 ],
-					"text" : ";\rin1-to-filter 100"
+					"patching_rect" : [ 199.0, 418.0, 105.0, 35.0 ],
+					"text" : ";\rinput1-to-filter 100"
 				}
 
 			}
@@ -425,6 +450,7 @@
 					"extract" : 1,
 					"id" : "obj-15",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "bp.Reverb 1.maxpat",
 					"numinlets" : 4,
@@ -447,6 +473,7 @@
 					"extract" : 1,
 					"id" : "obj-14",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"name" : "bp.LPF.maxpat",
 					"numinlets" : 5,
@@ -536,7 +563,7 @@
 				"box" : 				{
 					"id" : "obj-25",
 					"maxclass" : "newobj",
-					"numinlets" : 1,
+					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "multichannelsignal" ],
 					"patching_rect" : [ 30.0, 256.0, 216.0, 22.0 ],
@@ -552,15 +579,19 @@
 					"numinlets" : 2,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 363.0, 565.0, 150.0, 22.0 ],
-					"text" : "replace effects reverb filter"
+					"patching_rect" : [ 363.0, 536.0, 173.0, 22.0 ],
+					"text" : "replace effects::top reverb filter"
 				}
 
 			}
 , 			{
 				"box" : 				{
 					"data" : 					{
-						"effects" : [ "reverb", "filter" ]
+						"effects" : 						{
+							"bottom" : [ "reverb", "filter" ],
+							"top" : [ "reverb", "filter" ]
+						}
+
 					}
 ,
 					"id" : "obj-2",
@@ -568,7 +599,7 @@
 					"numinlets" : 2,
 					"numoutlets" : 4,
 					"outlettype" : [ "dictionary", "", "", "" ],
-					"patching_rect" : [ 363.0, 598.0, 103.0, 22.0 ],
+					"patching_rect" : [ 363.0, 618.0, 103.0, 22.0 ],
 					"saved_object_attributes" : 					{
 						"embed" : 1,
 						"parameter_enable" : 0,
@@ -690,6 +721,15 @@
 , 			{
 				"patchline" : 				{
 					"destination" : [ "obj-4", 0 ],
+					"order" : 1,
+					"source" : [ "obj-3", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-6", 0 ],
+					"order" : 0,
 					"source" : [ "obj-3", 0 ]
 				}
 
@@ -742,6 +782,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"source" : [ "obj-6", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-8", 0 ],
 					"source" : [ "obj-7", 0 ]
 				}
@@ -772,38 +819,21 @@
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "pr.XbarMaker.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/patchers",
-				"patcherrelativepath" : "../patchers",
+				"name" : "M4L.cross1~.maxpat",
+				"bootpath" : "C74:/patchers/m4l/Tools resources",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "xbar.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/patchers",
-				"patcherrelativepath" : "../patchers",
+				"name" : "bp.LPF.maxpat",
+				"bootpath" : "C74:/packages/BEAP/clippings/BEAP/Filter",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "xmaker.js",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "pr.matrix~.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/patchers",
-				"patcherrelativepath" : "../patchers",
+				"name" : "bp.Reverb 1.maxpat",
+				"bootpath" : "C74:/packages/BEAP/clippings/BEAP/Effects",
 				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
-				"name" : "maxtrixmaker.js",
-				"bootpath" : "~/Documents/Max 8/Packages/PR.jstools/javascript",
-				"patcherrelativepath" : "../javascript",
-				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
@@ -813,23 +843,38 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.LPF.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/BEAP-master/clippings/BEAP/Filter",
-				"patcherrelativepath" : "../../BEAP-master/clippings/BEAP/Filter",
+				"name" : "maxtrixmaker2.js",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pr.XbarMaker.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "bp.Reverb 1.maxpat",
-				"bootpath" : "~/Documents/Max 8/Packages/BEAP-master/clippings/BEAP/Effects",
-				"patcherrelativepath" : "../../BEAP-master/clippings/BEAP/Effects",
+				"name" : "pr.matrix~.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
-				"name" : "M4L.cross1~.maxpat",
-				"bootpath" : "C74:/patchers/m4l/Tools resources",
+				"name" : "xbar.maxpat",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/patchers",
+				"patcherrelativepath" : "../patchers",
 				"type" : "JSON",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "xmaker2.js",
+				"bootpath" : "~/Documents/Max 8/Packages/pr.Toolbox/javascript",
+				"patcherrelativepath" : "../javascript",
+				"type" : "TEXT",
 				"implicit" : 1
 			}
  ],
@@ -838,13 +883,13 @@
 				"name" : "AudioStatus_Menu",
 				"default" : 				{
 					"bgfillcolor" : 					{
-						"type" : "color",
+						"angle" : 270.0,
+						"autogradient" : 0,
 						"color" : [ 0.294118, 0.313726, 0.337255, 1 ],
 						"color1" : [ 0.454902, 0.462745, 0.482353, 0.0 ],
 						"color2" : [ 0.290196, 0.309804, 0.301961, 1.0 ],
-						"angle" : 270.0,
 						"proportion" : 0.39,
-						"autogradient" : 0
+						"type" : "color"
 					}
 
 				}
@@ -900,8 +945,8 @@
 , 			{
 				"name" : "newobjYellow-1",
 				"default" : 				{
-					"fontsize" : [ 12.059008 ],
-					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ]
+					"accentcolor" : [ 0.82517, 0.78181, 0.059545, 1.0 ],
+					"fontsize" : [ 12.059008 ]
 				}
 ,
 				"parentstyle" : "",
@@ -919,9 +964,9 @@
 , 			{
 				"name" : "velvet-biggs",
 				"default" : 				{
-					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ],
 					"clearcolor" : [ 0.0, 0.0, 0.0, 1.0 ],
-					"fontname" : [ "Avenir Next Regular" ]
+					"fontname" : [ "Avenir Next Regular" ],
+					"textcolor" : [ 1.0, 1.0, 1.0, 1.0 ]
 				}
 ,
 				"parentstyle" : "",
